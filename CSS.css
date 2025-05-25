@@ -1,0 +1,136 @@
+        .hero-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-icon {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background-color: #f8fafc;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            border-left: none;
+            border-right: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .animate-fade-out {
+            animation: fadeOut 0.5s ease forwards;
+        }
+
+        /* Mobile menu animation */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        #mobile-menu.show {
+            max-height: 500px;
+        }

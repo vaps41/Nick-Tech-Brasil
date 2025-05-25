@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick Tech Brasil - Produtos de Tecnologia</title>
+    <meta name="description" content="Loja de produtos de tecnologia com os melhores preços do mercado brasileiro">
+
+    <!-- CSS Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Tailwind Config -->
+    <script src="js.js"></script>
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS.css">
+
+</head>
+
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-laptop-code text-3xl text-primary"></i>
+                <a href="" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                    onclick="showTab('Nick Tech Brasil')">
+                    <h1 class="text-2xl font-bold text-dark">Nick Tech Brasil</h1>
+                </a>
+            </div>
+
+            <nav class="hidden md:flex space-x-8">
+                <div class="dropdown relative">
+                    <button class="flex items-center space-x-1 text-gray-700 hover:text-primary transition">
+                        <span>Produtos</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                        <a href="#notebooks" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                            onclick="showTab('notebooks')">Notebooks</a>
+                        <a href="#smartphones" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                            onclick="showTab('smartphones')">Smartphones</a>
+                        <a href="#acessorios" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                            onclick="showTab('acessorios')">Acessórios</a>
+                        <a href="#perifericos" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                            onclick="showTab('perifericos')">Periféricos</a>
+                    </div>
+                </div>
+                <a href="#promocoes" class="text-gray-700 hover:text-primary transition">Promoções</a>
+                <a href="#sobre" class="text-gray-700 hover:text-primary transition">Sobre Nós</a>
+                <a href="#contato" class="text-gray-700 hover:text-primary transition">Contato</a>
+                <a href="#assistencia" class="text-gray-700 hover:text-primary transition"
+                    onclick="showTab('assistencia')">Assistência Técnica</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button class="p-2 text-gray-600 hover:text-primary">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+                <button class="p-2 text-gray-600 hover:text-primary relative" onclick="goToCart()">
+                    <i class="fas fa-shopping-cart text-lg"></i>
+                    <span id="cart-count"
+                        class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button class="md:hidden p-2 text-gray-600 hover:text-primary" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden bg-white shadow-md" id="mobile-menu">
+            <div class="px-4 py-2">
+                <a href="#notebooks" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded"
+                    onclick="showTab('notebooks')">Notebooks</a>
+                <a href="#smartphones" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded"
+                    onclick="showTab('smartphones')">Smartphones</a>
+                <a href="#acessorios" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded"
+                    onclick="showTab('acessorios')">Acessórios</a>
+                <a href="#perifericos" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded"
+                    onclick="showTab('perifericos')">Periféricos</a>
+                <a href="#assistencia" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded"
+                    onclick="showTab('assistencia')">Assistência Técnica</a>
+                <a href="#promocoes" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Promoções</a>
+                <a href="#sobre" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Sobre Nós</a>
+                <a href="#contato" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Contato</a>
+                <a href="#assistencia" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 rounded">Assistência
+                    Técnica</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Página principal (produtos) -->
+        <div id="main-page">
+            <!-- Hero Section -->
+            <section class="hero-gradient text-white py-16 md:py-24">
+                <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4">Tecnologia de Ponta ao Seu Alcance</h2>
+                        <p class="text-xl mb-8 opacity-90">Os melhores produtos com os melhores preços do mercado
+                            brasileiro.</p>
+                        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                            <a href="#produtos"
+                                class="bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-opacity-90 transition shadow-lg text-center">
+                                Ver Produtos
+                            </a>
+                            <a href="#promocoes"
+                                class="border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition text-center">
+                                Promoções
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                            alt="Produtos de tecnologia" class="rounded-xl shadow-2xl max-w-full h-auto" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-dark mb-4">Por que escolher a Nick Tech?</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto">Oferecemos produtos de qualidade com garantia e
+                            suporte especializado para você.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="feature-card bg-gray-50 p-8 rounded-xl hover:shadow-lg transition cursor-pointer">
+                            <div
+                                class="feature-icon bg-primary bg-opacity-10 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-shield-alt text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-center mb-3">Garantia Extendida</h3>
+                            <p class="text-gray-600 text-center">Todos os nossos produtos possuem garantia estendida de
+                                até 2 anos contra defeitos de fabricação.</p>
+                        </div>
+
+                        <div class="feature-card bg-gray-50 p-8 rounded-xl hover:shadow-lg transition cursor-pointer">
+                            <div
+                                class="feature-icon bg-primary bg-opacity-10 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-truck text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-center mb-3">Entrega Rápida</h3>
+                            <p class="text-gray-600 text-center">Entregamos em todo o Brasil com prazo máximo de 5 dias
+                                úteis para grandes centros.</p>
+                        </div>
+
+                        <div class="feature-card bg-gray-50 p-8 rounded-xl hover:shadow-lg transition cursor-pointer">
+                            <div
+                                class="feature-icon bg-primary bg-opacity-10 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                                <i class="fas fa-headset text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-center mb-3">Suporte 24/7</h3>
+                            <p class="text-gray-600 text-center">Nossa equipe de suporte está disponível 24 horas por
+                                dia para resolver seus problemas.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="produtos" class="py-16 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <div class="flex justify-between items-center mb-12 flex-wrap gap-4">
+                        <h2 class="text-3xl font-bold text-dark">Nossos Produtos</h2>
+                        <div class="flex space-x-2 overflow-x-auto pb-2">
+                            <button
+                                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-secondary transition whitespace-nowrap"
+                                onclick="showTab('todos')">Todos</button>
+                            <button
+                                class="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition whitespace-nowrap"
+                                onclick="showTab('notebooks')">Notebooks</button>
+                            <button
+                                class="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition whitespace-nowrap"
+                                onclick="showTab('smartphones')">Smartphones</button>
+                            <button
+                                class="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition whitespace-nowrap"
+                                onclick="showTab('acessorios')">Acessórios</button>
+                            <button
+                                class="px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-100 transition whitespace-nowrap"
+                                onclick="showTab('perifericos')">Periféricos</button>
+                        </div>
+                    </div>
+
+                    <!-- Todos os Produtos -->
+                    <div id="todos" class="tab-content active">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Notebook 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="MacBook Pro" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -15%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">MacBook Pro M2</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Chip M2 com CPU de 8 núcleos e GPU de 10
+                                        núcleos</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 12.499</span>
+                                            <p class="text-primary font-bold text-xl">R$ 10.599</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('MacBook Pro M2', 10599, 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Smartphone 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1601784551446-66c9e1a14984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="iPhone 14 Pro" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">iPhone 14 Pro</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.9</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Tela Super Retina XDR de 6,1 polegadas</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 7.999</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('iPhone 14 Pro', 7999, 'https://images.unsplash.com/photo-1601784551446-66c9e1a14984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Acessório 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Samsung Galaxy Watch" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -20%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Galaxy Watch 5</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.7</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Monitoramento avançado de saúde e fitness</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 1.799</span>
+                                            <p class="text-primary font-bold text-xl">R$ 1.439</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Galaxy Watch 5', 1439, 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Periférico 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1558537298-9c35160b1d78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="AirPods Pro" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">AirPods Pro (2ª geração)</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Cancelamento ativo de ruído e som espacial</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 2.299</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('AirPods Pro (2ª geração)', 2299, 'https://images.unsplash.com/photo-1558537298-9c35160b1d78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notebooks -->
+                    <div id="notebooks" class="tab-content">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Notebook 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="MacBook Pro" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -15%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">MacBook Pro M2</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Chip M2 com CPU de 8 núcleos e GPU de 10
+                                        núcleos</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 12.499</span>
+                                            <p class="text-primary font-bold text-xl">R$ 10.599</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('MacBook Pro M2', 10599, 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notebook 2 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Dell XPS 15" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Dell XPS 15</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.7</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Intel Core i7, 16GB RAM, SSD 512GB</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 8.999</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Dell XPS 15', 8999, 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notebook 3 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1618410322563-43c112e35c3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Asus ROG Zephyrus" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -10%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Asus ROG Zephyrus</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.6</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">AMD Ryzen 9, RTX 3060, 32GB RAM</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 9.999</span>
+                                            <p class="text-primary font-bold text-xl">R$ 8.999</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Asus ROG Zephyrus', 8999, 'https://images.unsplash.com/photo-1618410322563-43c112e35c3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Notebook 4 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1593642702749-b7d2a804fbcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Lenovo ThinkPad" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Lenovo ThinkPad X1</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.5</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Intel Core i5, 16GB RAM, SSD 1TB</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 7.499</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Lenovo ThinkPad X1', 7499, 'https://images.unsplash.com/photo-1593642702749-b7d2a804fbcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smartphones -->
+                    <div id="smartphones" class="tab-content">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Smartphone 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1601784551446-66c9e1a14984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="iPhone 14 Pro" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">iPhone 14 Pro</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.9</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Tela Super Retina XDR de 6,1 polegadas</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 7.999</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('iPhone 14 Pro', 7999, 'https://images.unsplash.com/photo-1601784551446-66c9e1a14984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Smartphone 2 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Samsung Galaxy S23 Ultra" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Galaxy S23 Ultra</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Câmera de 200MP e S Pen integrada</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 7.499</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Galaxy S23 Ultra', 7499, 'https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Smartphone 3 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892fbc16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Xiaomi 13 Pro" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Xiaomi 13 Pro</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.7</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Tela AMOLED 120Hz, Snapdragon 8 Gen 2</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 5.999</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Xiaomi 13 Pro', 5999, 'https://images.unsplash.com/photo-1631729371254-42c2892fbc16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Smartphone 4 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1670272505340-d906d8a77d43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Google Pixel 7" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -8%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Google Pixel 7 Pro</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.6</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Tensor G2, câmera de 50MP, Android puro</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 6.799</span>
+                                            <p class="text-primary font-bold text-xl">R$ 6.255</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Google Pixel 7 Pro', 6255, 'https://images.unsplash.com/photo-1670272505340-d906d8a77d43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Acessórios -->
+                    <div id="acessorios" class="tab-content">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Acessório 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Samsung Galaxy Watch" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -20%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Galaxy Watch 5</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.7</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Monitoramento avançado de saúde e fitness</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 1.799</span>
+                                            <p class="text-primary font-bold text-xl">R$ 1.439</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Galaxy Watch 5', 1439, 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Acessório 2 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Apple Watch" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Apple Watch Series 8</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Monitor de saúde com ECG e oxigênio no sangue
+                                    </p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 4.299</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Apple Watch Series 8', 4299, 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Acessório 3 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Power Bank" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -25%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Power Bank 20.000mAh</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.5</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Carregador portátil com 3 saídas USB</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 199</span>
+                                            <p class="text-primary font-bold text-xl">R$ 149</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Power Bank 20.000mAh', 149, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Acessório 4 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Capa para iPhone" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Capa iPhone 14 Pro</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.3</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Capa protetora com MagSafe e amortecimento</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 199</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Capa iPhone 14 Pro', 199, 'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Periféricos -->
+                    <div id="perifericos" class="tab-content">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Periférico 1 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1558537298-9c35160b1d78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="AirPods Pro" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">AirPods Pro (2ª geração)</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Cancelamento ativo de ruído e som espacial</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 2.299</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('AirPods Pro (2ª geração)', 2299, 'https://images.unsplash.com/photo-1558537298-9c35160b1d78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Periférico 2 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1547721064-da6cfb341d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Headset Gamer" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -18%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Headset Gamer HyperX</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.6</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">7.1 surround, microfone com cancelamento de
+                                        ruído</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 899</span>
+                                            <p class="text-primary font-bold text-xl">R$ 737</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Headset Gamer HyperX', 737, 'https://images.unsplash.com/photo-1547721064-da6cfb341d50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Periférico 3 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Teclado Mecânico" class="w-full h-48 object-cover" loading="lazy">
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Teclado Mecânico Logitech</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.7</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">Switches GX Blue, retroiluminação RGB</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-primary font-bold text-xl">R$ 699</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Teclado Mecânico Logitech', 699, 'https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Periférico 4 -->
+                            <div class="product-card bg-white rounded-xl overflow-hidden shadow-md">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                        alt="Mouse Gamer" class="w-full h-48 object-cover" loading="lazy">
+                                    <div
+                                        class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                        -15%
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="font-semibold text-lg">Mouse Gamer Razer</h3>
+                                        <div class="flex items-center text-yellow-400">
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-600 text-sm ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-600 text-sm mb-3">20.000 DPI, 8 botões programáveis, RGB</p>
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <span class="text-gray-400 line-through text-sm">R$ 599</span>
+                                            <p class="text-primary font-bold text-xl">R$ 509</p>
+                                        </div>
+                                        <button
+                                            class="bg-primary text-white p-2 rounded-full hover:bg-secondary transition"
+                                            onclick="addToCart('Mouse Gamer Razer', 509, 'https://images.unsplash.com/photo-1527814050087-3793815479db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Assistencia Section -->
+            <div id="assistencia" class="tab-content">
+                <section class="py-16 bg-white">
+                    <div class="container mx-auto px-4">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl font-bold text-dark mb-4">Assistência Técnica Especializada</h2>
+                            <p class="text-gray-600 max-w-2xl mx-auto">Nossos técnicos certificados estão prontos para
+                                resolver qualquer problema em seus dispositivos.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                            <div class="bg-gray-50 p-8 rounded-xl">
+                                <div class="flex items-center mb-6">
+                                    <i class="fab fa-windows text-4xl text-blue-500 mr-4"></i>
+                                    <h3 class="text-2xl font-semibold">Reparo de Computadores</h3>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Técnico reparando computador" class="w-full h-64 object-cover rounded-lg mb-6"
+                                    loading="lazy">
+                                <ul class="space-y-3 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Formatação e instalação do Windows</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Substituição de peças e upgrades</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Remoção de vírus e otimização</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Recuperação de dados</span>
+                                    </li>
+                                </ul>
+                                <button
+                                    class="mt-6 bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition"
+                                    onclick="addToCart('Serviço de Reparo - Computador', 150, 'https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80', 'service')">
+                                    Solicitar Orçamento
+                                </button>
+                            </div>
+
+                            <div class="bg-gray-50 p-8 rounded-xl">
+                                <div class="flex items-center mb-6">
+                                    <i class="fab fa-android text-4xl text-green-500 mr-4"></i>
+                                    <i class="fab fa-apple text-4xl text-gray-800 mr-4"></i>
+                                    <h3 class="text-2xl font-semibold">Reparo de Smartphones</h3>
+                                </div>
+                                <img src="https://smartback.com.br/upload/service/KbTSc7KLJCgYVaJX4UITiGM2cRdk20koTiBAM9in.jpeg"
+                                    alt="Técnico reparando smartphone" class="w-full h-64 object-cover rounded-lg mb-6"
+                                    loading="lazy">
+                                <ul class="space-y-3 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Troca de telas e baterias</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Reparo em placas e componentes</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Desbloqueio e desativação de FRP</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                        <span>Recuperação de dados e backup</span>
+                                    </li>
+                                </ul>
+                                <button
+                                    class="mt-6 bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition"
+                                    onclick="addToCart('Serviço de Reparo - Smartphone', 120, 'https://smartback.com.br/upload/service/KbTSc7KLJCgYVaJX4UITiGM2cRdk20koTiBAM9in.jpeg', 'service')">
+                                    Solicitar Orçamento
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-primary text-white rounded-xl p-8">
+                            <div class="flex flex-col md:flex-row items-center">
+                                <div class="md:w-2/3 mb-6 md:mb-0">
+                                    <h3 class="text-2xl font-bold mb-3">Serviço Premium</h3>
+                                    <p class="mb-4">Assinatura mensal com manutenção preventiva, suporte prioritário e
+                                        desconto em
+                                        peças.</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-star mr-2"></i>
+                                            <span>Visita técnica mensal</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-star mr-2"></i>
+                                            <span>Desconto de 20% em peças</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-star mr-2"></i>
+                                            <span>Suporte 24h prioritário</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="md:w-1/3 text-center">
+                                    <p class="text-4xl font-bold mb-2">R$ 99,90<span class="text-lg">/mês</span></p>
+                                    <button
+                                        class="bg-white text-primary px-6 py-3 rounded-lg hover:bg-opacity-90 transition font-semibold"
+                                        onclick="addToCart('Plano Premium - Assistência Técnica', 99.90, 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80', 'plan')">
+                                        Contratar Plano
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="py-16 bg-gray-50">
+                    <div class="container mx-auto px-4">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl font-bold text-dark mb-4">Nossos Técnicos Certificados</h2>
+                            <p class="text-gray-600 max-w-2xl mx-auto">Profissionais qualificados pelas principais
+                                marcas do
+                                mercado.</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="text-center">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Técnico Microsoft" class="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                                    loading="lazy">
+                                <h4 class="font-semibold">Carlos Silva</h4>
+                                <p class="text-gray-600 text-sm">Certificação Microsoft</p>
+                                <div class="flex justify-center mt-2">
+                                    <i class="fab fa-windows text-blue-500 mx-1"></i>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Técnico Apple" class="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                                    loading="lazy">
+                                <h4 class="font-semibold">Ana Oliveira</h4>
+                                <p class="text-gray-600 text-sm">Certificação Apple</p>
+                                <div class="flex justify-center mt-2">
+                                    <i class="fab fa-apple text-gray-800 mx-1"></i>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Técnico Samsung" class="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                                    loading="lazy">
+                                <h4 class="font-semibold">Roberto Santos</h4>
+                                <p class="text-gray-600 text-sm">Certificação Samsung</p>
+                                <div class="flex justify-center mt-2">
+                                    <i class="fab fa-android text-green-500 mx-1"></i>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Técnico Dell" class="w-32 h-32 object-cover rounded-full mx-auto mb-4"
+                                    loading="lazy">
+                                <h4 class="font-semibold">Mariana Costa</h4>
+                                <p class="text-gray-600 text-sm">Certificação Dell</p>
+                                <div class="flex justify-center mt-2">
+                                    <i class="fas fa-laptop-code text-primary mx-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- Promoções Section -->
+            <section id="promocoes" class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-dark mb-4">Promoções Especiais</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto">Aproveite nossas ofertas por tempo limitado!</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Promo 1 -->
+                        <div class="bg-red-50 rounded-xl overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="MacBook Pro" class="w-full h-48 object-cover" loading="lazy">
+                                <div
+                                    class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    -15%
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">MacBook Pro M2</h3>
+                                <p class="text-gray-600 text-sm mb-4">Chip M2 com CPU de 8 núcleos e GPU de 10 núcleos
+                                </p>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-gray-400 line-through text-sm">R$ 12.499</span>
+                                        <p class="text-red-600 font-bold text-xl">R$ 10.599</p>
+                                    </div>
+                                    <button
+                                        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                                        onclick="addToCart('MacBook Pro M2', 10599, 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                        Comprar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Promo 2 -->
+                        <div class="bg-red-50 rounded-xl overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Samsung Galaxy S23" class="w-full h-48 object-cover" loading="lazy">
+                                <div
+                                    class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    -12%
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Galaxy S23 Ultra</h3>
+                                <p class="text-gray-600 text-sm mb-4">Câmera de 200MP, S Pen integrado</p>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-gray-400 line-through text-sm">R$ 8.499</span>
+                                        <p class="text-red-600 font-bold text-xl">R$ 7.479</p>
+                                    </div>
+                                    <button
+                                        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                                        onclick="addToCart('Galaxy S23 Ultra', 7479, 'https://images.unsplash.com/photo-1664478546384-d57ffe74a78c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                        Comprar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Promo 3 -->
+                        <div class="bg-red-50 rounded-xl overflow-hidden shadow-md">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                    alt="Samsung Galaxy Watch" class="w-full h-48 object-cover" loading="lazy">
+                                <div
+                                    class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    -20%
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-2">Galaxy Watch 5</h3>
+                                <p class="text-gray-600 text-sm mb-4">Monitoramento avançado de saúde e fitness</p>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <span class="text-gray-400 line-through text-sm">R$ 1.799</span>
+                                        <p class="text-red-600 font-bold text-xl">R$ 1.439</p>
+                                    </div>
+                                    <button
+                                        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                                        onclick="addToCart('Galaxy Watch 5', 1439, 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80')">
+                                        Comprar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sobre Nós Section -->
+            <section id="sobre" class="py-16 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                            <h2 class="text-3xl font-bold text-dark mb-6">Sobre a Nick Tech Brasil</h2>
+                            <p class="text-gray-600 mb-4">Fundada em 2010, a Nick Tech Brasil é uma das maiores
+                                distribuidoras de tecnologia do país, com mais de 1 milhão de clientes satisfeitos.</p>
+                            <p class="text-gray-600 mb-6">Nossa missão é levar tecnologia de qualidade para todos os
+                                brasileiros, com preços acessíveis e excelente atendimento.</p>
+                            <div class="flex space-x-4">
+                                <div class="text-center">
+                                    <p class="text-primary font-bold text-3xl">12+</p>
+                                    <p class="text-gray-600">Anos no mercado</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-primary font-bold text-3xl">1M+</p>
+                                    <p class="text-gray-600">Clientes satisfeitos</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-primary font-bold text-3xl">50+</p>
+                                    <p class="text-gray-600">Marcas parceiras</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                                alt="Equipe Nick Tech" class="rounded-xl shadow-xl w-full" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contato Section -->
+            <section id="contato" class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-dark mb-4">Entre em Contato</h2>
+                        <p class="text-gray-600 max-w-2xl mx-auto">Tem dúvidas ou precisa de ajuda? Nossa equipe está
+                            pronta
+                            para te atender.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Informações de Contato</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                                    <div>
+                                        <p class="font-semibold">Endereço</p>
+                                        <p class="text-gray-600">Av. Paulista, 1000 - São Paulo/SP</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-phone-alt text-primary mt-1"></i>
+                                    <div>
+                                        <p class="font-semibold">Telefone</p>
+                                        <p class="text-gray-600">(11) 4002-8922</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-envelope text-primary mt-1"></i>
+                                    <div>
+                                        <p class="font-semibold">Email</p>
+                                        <p class="text-gray-600">contato@nicktech.com.br</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start space-x-4">
+                                    <i class="fas fa-clock text-primary mt-1"></i>
+                                    <div>
+                                        <p class="font-semibold">Horário de Atendimento</p>
+                                        <p class="text-gray-600">Seg-Sex: 9h às 18h | Sáb: 9h às 13h</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-4">Envie uma Mensagem</h3>
+                            <form class="space-y-4" id="contact-form">
+                                <div>
+                                    <label for="nome" class="block text-gray-700 mb-1">Nome</label>
+                                    <input type="text" id="nome" name="nome" required
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-gray-700 mb-1">Email</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="mensagem" class="block text-gray-700 mb-1">Mensagem</label>
+                                    <textarea id="mensagem" name="mensagem" rows="4" required
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-secondary transition w-full">
+                                    Enviar Mensagem
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+        <!-- Página do carrinho (hidden por padrão) -->
+        <div id="cart-page" class="hidden min-h-screen bg-gray-50 py-12">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-dark">Seu Carrinho</h2>
+                    <button onclick="goBackToProducts()" class="text-primary hover:text-secondary flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Voltar aos produtos
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div id="cart-items-container">
+                            <!-- Itens do carrinho serão adicionados aqui dinamicamente -->
+                            <p class="text-center text-gray-500 py-8" id="empty-cart-message">Seu carrinho está vazio
+                            </p>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-6 mt-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-lg font-semibold">Total:</span>
+                                <span id="cart-total" class="text-2xl font-bold text-primary">R$ 0,00</span>
+                            </div>
+                            <button id="checkout-btn"
+                                class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled>
+                                Finalizar Compra
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página de checkout (hidden por padrão) -->
+        <div id="checkout-page" class="hidden min-h-screen bg-gray-50 py-12">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-dark">Finalizar Compra</h2>
+                    <button onclick="goBackToCart()" class="text-primary hover:text-secondary flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i> Voltar ao carrinho
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Resumo do Pedido</h3>
+                        <div id="checkout-items-container">
+                            <!-- Itens do checkout serão adicionados aqui dinamicamente -->
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-4 mt-4">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-600">Subtotal:</span>
+                                <span id="checkout-subtotal" class="font-medium">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-gray-600">Frete:</span>
+                                <span class="font-medium">Grátis</span>
+                            </div>
+                            <div class="flex justify-between items-center text-lg font-semibold mt-4">
+                                <span>Total:</span>
+                                <span id="checkout-total" class="text-primary">R$ 0,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Informações de Pagamento</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 mb-2">Nome Completo</label>
+                                <input type="text" id="checkout-name" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">CPF</label>
+                                <input type="text" id="checkout-cpf" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">E-mail</label>
+                                <input type="email" id="checkout-email" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2">Telefone</label>
+                                <input type="tel" id="checkout-phone" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-4">Método de Pagamento</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <input type="radio" id="pix" name="payment" value="pix"
+                                    class="h-4 w-4 text-primary focus:ring-primary">
+                                <label for="pix" class="ml-2 block text-gray-700">PIX</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" id="boleto" name="payment" value="boleto"
+                                    class="h-4 w-4 text-primary focus:ring-primary">
+                                <label for="boleto" class="ml-2 block text-gray-700">Boleto Bancário</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="generate-pdf-btn"
+                    class="w-full mt-8 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition flex items-center justify-center">
+                    <i class="fas fa-whatsapp mr-2"></i>✅ Finalizar Pedido via WhatsApp
+                </button>
+            </div>
+        </div>
+
+        <!-- Newsletter Section -->
+        <section class="py-12 bg-primary text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-2xl font-bold mb-4">Assine Nossa Newsletter</h2>
+                <p class="max-w-2xl mx-auto mb-6">Receba ofertas exclusivas e novidades diretamente no seu email.</p>
+                <form class="flex flex-col sm:flex-row max-w-md mx-auto space-y-3 sm:space-y-0 sm:space-x-3"
+                    id="newsletter-form">
+                    <input type="email" placeholder="Seu melhor email" required
+                        class="flex-grow px-4 py-3 rounded-lg text-gray-800 focus:outline-none">
+                    <button type="submit"
+                        class="bg-white text-primary font-semibold px-6 py-3 rounded-lg hover:bg-opacity-90 transition">
+                        Assinar
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Nick Tech Brasil</h3>
+                        <p class="text-gray-400">Tecnologia de qualidade ao seu alcance com os melhores preços do
+                            mercado.</p>
+                        <div class="flex space-x-4 mt-6">
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold mb-4">Produtos</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition"
+                                    onclick="showTab('notebooks')">Notebooks</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition"
+                                    onclick="showTab('smartphones')">Smartphones</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition"
+                                    onclick="showTab('acessorios')">Acessórios</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition"
+                                    onclick="showTab('perifericos')">Periféricos</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold mb-4">Institucional</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#sobre" class="text-gray-400 hover:text-white transition">Sobre Nós</a></li>
+                            <li><a href="#contato" class="text-gray-400 hover:text-white transition">Contato</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Política de
+                                    Privacidade</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Termos de Uso</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold mb-4">Atendimento</h4>
+                        <ul class="space-y-2">
+                            <li class="text-gray-400">Seg-Sex: 9h às 18h</li>
+                            <li class="text-gray-400">Sáb: 9h às 13h</li>
+                            <li class="text-gray-400">(11) 4002-8922</li>
+                            <li class="text-gray-400">contato@nicktech.com.br</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                    <p>&copy; 2023 Nick Tech Brasil. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- WhatsApp Float Button -->
+        <a href="https://wa.me/5519999307916" class="whatsapp-float" target="_blank" aria-label="Chat no WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </main>
+<script src="js2.js"></script>
+
+</body>
+
+</html>
